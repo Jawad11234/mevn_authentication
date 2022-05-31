@@ -16,7 +16,12 @@ app.use(
 );
 
 app.use(bodyParser.json());
-app.use(cors());
+var corsOptions = {
+  origin: "https://mevn-authentication-app.herokuapp.com",
+  optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+};
+
+app.use(cors(corsOptions));
 
 app.use(passport.initialize());
 require("./config/passport")(passport);
